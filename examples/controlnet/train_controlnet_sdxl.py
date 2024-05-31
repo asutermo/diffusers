@@ -628,6 +628,7 @@ def get_train_dataset(args, accelerator):
 
     # In distributed training, the load_dataset function guarantees that only one local process can concurrently
     # download the dataset.
+    print(args.train_data_dir)
     if args.dataset_name is not None:
         # Downloading and loading a dataset from the hub.
         dataset = load_dataset(
@@ -636,6 +637,9 @@ def get_train_dataset(args, accelerator):
             cache_dir=args.cache_dir,
         )
     else:
+        for root, dirs, files in os.walk(args.train_data_dir):
+            for file in files:
+                print(os.path.join(root, file))
         if args.train_data_dir is not None:
             dataset = load_dataset(
                 args.train_data_dir,
