@@ -425,8 +425,9 @@ def parse_args(input_args=None):
 
 def main(args):
     try:
-        a_args = ["accelerate", "launch", "num_processes=8", "--multi_gpu", "examples/controlnet/train_controlnet_sagemaker.py"]
-        a_args.extend(args)
+        a_args = ["accelerate", "launch", "num_processes=8", "--multi_gpu", "examples/controlnet/train_controlnet_sagemaker.py", args]
+        #a_args.extend(args)
+        print(a_args)
         result = subprocess.run(a_args, capture_output=True, text=True, check=True)
         print("Output from other_script.py:\n", result.stdout)
     except subprocess.CalledProcessError as e:
