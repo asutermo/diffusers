@@ -11,7 +11,7 @@ def main(args):
         print("Error running other_script.py with accelerate:\n", e.stderr)
 
 if __name__ == "__main__":
-    a_args = ["accelerate", "launch", "num_processes=8", "--multi_gpu", "examples/controlnet/train_controlnet_sagemaker.py"] +  sys.argv[1:]
+    a_args = ["accelerate", "launch", "--num_processes=8", "--multi_gpu", "examples/controlnet/train_controlnet_sagemaker.py"] +  sys.argv[1:]
     try:
         #a_args.extend(args)
         print(a_args)
