@@ -8,7 +8,7 @@ if __name__ == "__main__":
     print(current_script_directory)
     with os.scandir(current_script_directory) as entries:
         for entry in entries:
-            print(entry)
+            print(entry.name, entry.path)
     args = ["accelerate", "launch", "--num_processes=8", "--multi_gpu", f"{current_script_directory}/train_controlnet_sdxl.py"] +  sys.argv[1:]
     try:
         print(args)
